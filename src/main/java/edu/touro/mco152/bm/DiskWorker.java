@@ -20,23 +20,15 @@ import static edu.touro.mco152.bm.DiskMark.MarkType.READ;
 import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 
 /**
- * Run the disk benchmarking as a Swing-compliant thread (only one of these threads can run at
- * once.) Cooperates with Swing to provide and make use of interim and final progress and
- * information, which is also recorded as needed to the persistence store, and log.
+ * Executes disk benchmarking as a Swing-compliant thread, ensuring only one runs at a time.
+ * Cooperates with Swing to update progress, log results, and persist data.
  * <p>
- * Depends on static values that describe the benchmark to be done having been set in App and Gui classes.
- * The DiskRun class is used to keep track of and persist info about each benchmark at a higher level (a run),
- * while the DiskMark class described each iteration's result, which is displayed by the UI as the benchmark run
- * progresses.
+ * Relies on static benchmark settings from App and Gui. Uses DiskRun to track benchmarks
+ * and DiskMark for iteration results displayed in the UI.
  * <p>
- * This class only knows how to do 'read' or 'write' disk benchmarks. It is instantiated by the
- * startBenchmark() method.
- * <p>
- * To be Swing compliant this class extends SwingWorker and declares that its final return (when
- * doInBackground() is finished) is of type Boolean, and declares that intermediate results are communicated to
- * Swing using an instance of the DiskMark class.
+ * Supports 'read' and 'write' benchmarks and is instantiated via startBenchmark().
+ * Extends SwingWorker, returning a Boolean and communicating progress via DiskMark.
  */
-
 public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
 
     // Record any success or failure status returned from SwingWorker (might be us or super)
@@ -288,10 +280,10 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
     }
 
     /**
-     * Process a list of 'chunks' that have been processed, ie that our thread has previously
-     * published to Swing. For my info, watch Professor Cohen's video -
-     * Module_6_RefactorBadBM Swing_DiskWorker_Tutorial.mp4
-     * @param markList a list of DiskMark objects reflecting some completed benchmarks
+     * Processes a list of completed benchmark chunks published to Swing.
+     * Updates the GUI with write or read benchmark results.
+     *
+     * @param markList list of DiskMark objects representing completed benchmarks
      */
     @Override
     protected void process(List<DiskMark> markList) {

@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'edu.touro.mco152.bm'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.jfree', name: 'jfreechart', version: '1.0.17'
+    implementation 'org.jfree:jcommon:1.0.21'
+    implementation group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: '3.0.0'
+    implementation group: 'org.eclipse.persistence', name: 'eclipselink', version: '3.0.2'
+    implementation group: 'org.apache.derby', name: 'derby', version: '10.15.2.0'
+    implementation group: 'org.apache.derby', name: 'derbyshared', version: '10.15.2.0'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+java {
+    sourceCompatibility = '21'
+    targetCompatibility = '21'
+}
+
+application {
+    mainClass = 'edu.touro.mco152.bm.App'
+}
+
+tasks.register('fatJar', Jar) {
+    group = 'build'
+    description = 'Assemble an executable fat JAR containing all dependencies.'
+
+    dependsOn classes
+    archiveBaseName.set('badbm')
+    archiveVersion.set('')
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes 'Main-Class': application.mainClass.get()
+    }
+
+    from {
+        configurations.runtimeClasspath
+                .findAll { it.name.endsWith('.jar') }
+                .collect { zipTree(it) }
+    }
+
+    from sourceSets.main.output
+}
+
+

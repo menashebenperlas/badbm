@@ -16,7 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables, main and common methods.
+ * Central class for global variables, the main entry point, and common utility methods.
+ * Provides shared functionality and state management for the application.
  */
 public class App {
 
@@ -80,10 +81,12 @@ public class App {
     }
 
     /**
-     * Get the version from the build properties. Defaults to 0.0 if not found.
+     * Retrieves the application version from the build properties file.
+     * Returns "0.0" if the version is not found or an error occurs.
      *
-     * @return
+     * @return the application version as a string
      */
+
     public static String getVersion() {
         Properties bp = new Properties();
         String version = "0.0";
