@@ -86,6 +86,7 @@ public class App {
      *
      * @return the application version as a string
      */
+
     public static String getVersion() {
         Properties bp = new Properties();
         String version = "0.0";

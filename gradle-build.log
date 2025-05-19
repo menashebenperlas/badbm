@@ -1,0 +1,62 @@
+Initialized native services in: /Users/menashebenperlas/.gradle/native
+Initialized jansi services in: /Users/menashebenperlas/.gradle/native
+The client will now receive all logging from the daemon (pid: 15952). The daemon log file: /Users/menashebenperlas/.gradle/daemon/8.14/daemon-15952.out.log
+Starting 2nd build in daemon [uptime: 6 mins 38.511 secs, performance: 99%, GC rate: 0.00/s, heap usage: 4% of 512 MiB, non-heap usage: 12% of 384 MiB]
+Using 8 worker leases.
+Now considering [/Users/menashebenperlas/IdeaProjects/lcmbadbm] as hierarchies to watch
+Reusing configuration cache.
+Now considering [/Users/menashebenperlas/IdeaProjects/lcmbadbm] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Using local directory build cache for the root build (location = /Users/menashebenperlas/.gradle/caches/build-cache-1, remove unused entries = after 7 days).
+Tasks to be executed: [task ':clean', task ':compileJava', task ':processResources', task ':classes', task ':fatJar']
+Tasks that were excluded: []
+Resolve mutations for :clean (Thread[#81,Execution worker,5,main]) started.
+:clean (Thread[#81,Execution worker,5,main]) started.
+destroyer locations for task group 0 (Thread[#83,Execution worker Thread 3,5,main]) started.
+Resolve mutations for :compileJava (Thread[#87,Execution worker Thread 7,5,main]) started.
+Resolve mutations for :processResources (Thread[#83,Execution worker Thread 3,5,main]) started.
+
+> Task :clean
+Caching disabled for task ':clean' because:
+  Deletion cannot be cached
+Task ':clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+:compileJava (Thread[#81,Execution worker,5,main]) started.
+:processResources (Thread[#87,Execution worker Thread 7,5,main]) started.
+
+> Task :processResources
+Caching disabled for task ':processResources' because:
+  Not worth caching
+Task ':processResources' is not up-to-date because:
+  Output property 'destinationDir' file /Users/menashebenperlas/IdeaProjects/lcmbadbm/build/resources/main has been removed.
+  Output property 'destinationDir' file /Users/menashebenperlas/IdeaProjects/lcmbadbm/build/resources/main/build.properties has been removed.
+  Output property 'destinationDir' file /Users/menashebenperlas/IdeaProjects/lcmbadbm/build/resources/main/disk-model.ps1 has been removed.
+  and more...
+
+> Task :compileJava FROM-CACHE
+Build cache key for task ':compileJava' is 72b3c67b74061af4a2e9a09b6bdc202c
+Task ':compileJava' is not up-to-date because:
+  Output property 'destinationDirectory' file /Users/menashebenperlas/IdeaProjects/lcmbadbm/build/classes/java/main has been removed.
+  Output property 'destinationDirectory' file /Users/menashebenperlas/IdeaProjects/lcmbadbm/build/classes/java/main/edu has been removed.
+  Output property 'destinationDirectory' file /Users/menashebenperlas/IdeaProjects/lcmbadbm/build/classes/java/main/edu/touro has been removed.
+  and more...
+Loaded cache entry for task ':compileJava' with cache key 72b3c67b74061af4a2e9a09b6bdc202c
+Resolve mutations for :classes (Thread[#81,Execution worker,5,main]) started.
+:classes (Thread[#81,Execution worker,5,main]) started.
+
+> Task :classes
+Skipping task ':classes' as it has no actions.
+Resolve mutations for :fatJar (Thread[#81,Execution worker,5,main]) started.
+:fatJar (Thread[#81,Execution worker,5,main]) started.
+
+> Task :fatJar
+Caching disabled for task ':fatJar' because:
+  Not worth caching
+Task ':fatJar' is not up-to-date because:
+  Output property 'archiveFile' file /Users/menashebenperlas/IdeaProjects/lcmbadbm/build/libs/badbm.jar has been removed.
+
+BUILD SUCCESSFUL in 1s
+4 actionable tasks: 3 executed, 1 from cache
+Watched directory hierarchies: [/Users/menashebenperlas/IdeaProjects/lcmbadbm]
+Configuration cache entry reused.
