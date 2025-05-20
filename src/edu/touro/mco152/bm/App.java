@@ -15,6 +15,8 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import edu.touro.mco152.bm.BenchmarkController;
+
 /**
  * Primary class for global variables, main and common methods.
  */
@@ -100,7 +102,8 @@ public class App {
      * Initialize the GUI Application.
      */
     public static void init() {
-        Gui.mainFrame = new MainFrame();
+        BenchmarkController ctrl = new DiskWorker();
+        Gui.mainFrame = new MainFrame(ctrl);
         Gui.selFrame = new SelectFrame();
         p = new Properties();
         loadConfig();
