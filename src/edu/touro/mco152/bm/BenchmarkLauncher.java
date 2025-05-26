@@ -39,4 +39,9 @@ public class BenchmarkLauncher implements BenchmarkController {
     public void shutdown() {
         exec.shutdownNow();
     }
+
+    @Override
+    public RunParameters getLastRunParameters() {
+        return service.getLastRunParameters();
+    }
 }

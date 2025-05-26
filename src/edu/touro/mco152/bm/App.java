@@ -16,6 +16,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.touro.mco152.bm.BenchmarkController;
+import edu.touro.mco152.bm.BenchmarkService;
+import edu.touro.mco152.bm.BenchmarkServiceImpl;
+import edu.touro.mco152.bm.RunParameters;
 
 /**
  * Primary class for global variables, main and common methods.
@@ -107,6 +110,19 @@ public class App {
         Gui.selFrame = new SelectFrame();
         p = new Properties();
         loadConfig();
+
+        // — Story 5: pick up last-used parameters if they exist —
+        BenchmarkService svc = new BenchmarkServiceImpl();
+        RunParameters last = svc.getLastRunParameters();
+        if (last != null) {
+            App.numOfMarks    = last.getNumFiles();
+            App.numOfBlocks   = last.getNumBlocks();
+            App.blockSizeKb   = last.getBlockSizeKb();
+            App.blockSequence = last.getBlockSequence();
+            App.readTest      = last.isReadTest();
+            App.writeTest     = last.isWriteTest();
+        }
+
         System.out.println(App.getConfigString());
         Gui.mainFrame.refreshConfig();
         Gui.mainFrame.setLocationRelativeTo(null);
