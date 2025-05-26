@@ -17,11 +17,16 @@ import java.util.logging.Logger;
 import static edu.touro.mco152.bm.App.dataDir;
 import static java.awt.Font.PLAIN;
 
+import edu.touro.mco152.bm.BenchmarkController;
+
 /**
  * Creates the MainFrame with methods that enable easy control
  */
 @SuppressWarnings("rawtypes")
 public final class MainFrame extends javax.swing.JFrame {
+
+    // Story 2: Swing UI depends on this abstraction
+    private final BenchmarkController controller;
 
     private static final long serialVersionUID = 1L;
     DecimalFormat df = new DecimalFormat("###.###");
@@ -88,7 +93,8 @@ public final class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public MainFrame(BenchmarkController controller) {
+        this.controller = controller;
         initComponents();
         ChartPanel chartPanel = Gui.createChartPanel();
         mountPanel.setLayout(new BorderLayout());
@@ -677,10 +683,12 @@ public final class MainFrame extends javax.swing.JFrame {
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         if (App.state == App.State.DISK_TEST_STATE) {
-            App.cancelBenchmark();
+            // cancel via the abstraction
+            controller.stopBenchmark();
         } else if (App.state == App.State.IDLE_STATE) {
             applyTestParams();
-            App.startBenchmark();
+            // start via the abstraction
+            controller.startBenchmark();
         }
 
     }//GEN-LAST:event_startButtonActionPerformed

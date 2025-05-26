@@ -1,5 +1,6 @@
 package edu.touro.mco152.bm.persist;
 
+import edu.touro.mco152.bm.RunParameters;
 import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -246,4 +247,16 @@ public class DiskRun implements Serializable {
     public enum IOMode {READ, WRITE, READ_WRITE}
 
     public enum BlockSequence {SEQUENTIAL, RANDOM}
+
+    /**
+     * Map this persisted run into a RunParameters DTO.
+     */
+    public RunParameters toRunParameters() {
+        return new RunParameters(
+                this.getNumMarks(),
+                this.getRunMin(),
+                this.getRunMax(),
+                this.getRunAvg()
+        );
+    }
 }
